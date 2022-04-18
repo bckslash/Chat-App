@@ -1,23 +1,53 @@
-# Next.js + Tailwind CSS Example
+# Chat App with Next.js and Tailwind CSS
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.0)](https://tailwindcss.com/blog/tailwindcss-v3) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+[![Status](https://img.shields.io/badge/status-active-success.svg)]()
+[![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-## Deploy your own
+## 📝 Table of Contents
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+- [About](#about)
+- [Getting Started](#getting_started)
+- [Deployment](#deployment)
+- [Built Using](#built_using)
+- [Authors](#authors)
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+## 🧐 About <a name = "about"></a>
 
-## How to use
+School project app running on cloud. Firebase storage and deployed on vercel.
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+## 🏁 Getting Started <a name = "getting_started"></a>
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-# or
-pnpm create next-app -- --example with-tailwindcss with-tailwindcss-app
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See [deployment](#deployment) for notes on how to deploy the project on a live system.
+
+### Installing
+
+A step by step series of examples that tell you how to get a development env running.
+
+Say what the step will be
+
+```
+git clone git@github.com:bckslash/Chat-App.git
+npm install
+yarn dev || npm run dev
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+## 🚀 Deployment <a name = "deployment"></a>
+
+App is deployed live here:
+
+- [Live](https://firebase.google.com/) - Chat App
+
+## ⛏️ Built Using <a name = "built_using"></a>
+
+- [Firebase](https://firebase.google.com/) - Database
+- [Next.js](https://nextjs.org/) - Web Framework
+- [Tailwind.css](https://tailwindcss.com/) - CSS Framework
+- [NodeJs](https://nodejs.org/en/) - Server Environment
+
+## ✍️ Authors <a name = "authors"></a>
+
+- [@robertsmrek](https://github.com/bckslash) - Idea & Initial work
+
+- [@robertbartos](https://github.com/bhartosh) - Vision

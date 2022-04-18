@@ -1,4 +1,6 @@
 module.exports = {
-  singleQuote: true,
-  semi: false,
-}
+    singleQuote: false,
+    semi: true,
+    tabWidth: 4,
+    useTabs: false,
+};
