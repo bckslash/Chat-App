@@ -6,12 +6,9 @@ import { useRouter } from "next/router";
 import { FaUserCircle } from "react-icons/fa";
 import getRecipientEmail from "../utils/getRecipientEmail";
 
-interface ChatProps {
-    id: string;
-    users: object[];
-}
+import { Chat } from "../typings";
 
-const Chat = ({ id, users }: ChatProps) => {
+const Chat = ({ id, users }: Chat) => {
     const router = useRouter();
     const [user] = useAuthState(auth);
     const [recipientSnapshot] = useCollection(
