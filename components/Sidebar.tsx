@@ -4,32 +4,65 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 import { AiOutlineSearch } from "react-icons/ai";
 
 import * as EmailValidator from "email-validator";
+import { auth, db } from "../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useCollection } from "react-firebase-hooks/firestore";
+import Chat from "./Chat";
 
-interface createChat {
+interface CreateChat {
     (): void;
 }
 
 function Sidebar() {
-    // TODO: add chats
+    const [user]: any = useAuthState(auth);
+    const userChatRef = db
+        .collection("chats")
+        .where("users", "array-contains", user.email);
 
-    const createChat: createChat = () => {
+    const [chatsSnapshot] = useCollection(userChatRef);
+
+    const createChat: CreateChat = () => {
         const input = prompt(
-            "Enter the email of the person you want to chat with"
+            "Please enter an email address for the user you wish to chat with"
         );
-        if (!input) {
-            return null;
-        }
 
-        if (!EmailValidator.validate(input)) {
-            alert("Invalid email");
-            return null;
+        if (!input) return null;
+
+        if (
+            EmailValidator.validate(input) &&
+            input !== user.email &&
+            !chatAlreadyExists(input)
+        ) {
+            db.collection("chats").add({
+                users: [user.email, input],
+            });
         }
     };
+
+    const chatAlreadyExists = (recipientEmail: string) =>
+        !!chatsSnapshot?.docs.find(
+            (chat) =>
+                chat
+                    .data()
+                    .users.find((user: string) => user === recipientEmail)
+                    ?.length > 0
+        );
 
     return (
         <aside className="min-h-screen min-w-max border-r border-gray-300 bg-gray-100">
             <header className="sticky z-10 flex flex-wrap items-center justify-between gap-20 border-b border-gray-300 bg-gray-200 p-2 xl:p-5">
-                <FaUserCircle className="m-3 cursor-pointer text-3xl text-gray-500 transition-opacity duration-200 ease-in-out hover:opacity-70 lg:text-5xl xl:m-0" />
+                {user ? (
+                    <img
+                        onClick={() => auth.signOut()}
+                        className="m-2 w-10 cursor-pointer rounded-full transition-opacity duration-200 ease-in-out hover:opacity-70 lg:w-12 xl:m-0"
+                        src={user?.photoURL}
+                    />
+                ) : (
+                    <FaUserCircle
+                        onClick={() => auth.signOut()}
+                        className="m-3 cursor-pointer text-3xl text-gray-500 transition-opacity duration-200 ease-in-out hover:opacity-70 lg:text-5xl xl:m-0"
+                    />
+                )}
                 <div className="flex items-center justify-center gap-2">
                     <button className="rounded-full p-3 text-center transition-colors duration-200 ease-in-out hover:bg-gray-300 active:bg-gray-400">
                         <BsFillChatLeftTextFill className="text-xl text-gray-800 md:text-2xl" />
@@ -53,6 +86,17 @@ function Sidebar() {
                 </div>
 
                 {/* list of chats */}
+                <div className="">
+                    {chatsSnapshot?.docs.map((chat) => {
+                        return (
+                            <Chat
+                                key={chat.id}
+                                id={chat.id}
+                                users={chat.data().users}
+                            />
+                        );
+                    })}
+                </div>
             </main>
         </aside>
     );

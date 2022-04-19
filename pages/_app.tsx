@@ -1,14 +1,15 @@
+import { AppProps } from "next/app";
+import { useEffect } from "react";
 import "../styles/globals.css";
-import type { AppProps } from "next/app";
-import { useAuthState } from "react-firebase-hooks/auth";
-import { auth, db } from "../firebase";
-import Login from "./login";
 
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
-import { useEffect } from "react";
-import Loading from "./loading";
+import { auth, db } from "../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+
+import Login from "./login";
+import Loading from "../components/Loading";
 
 function MyApp({ Component, pageProps }: AppProps) {
     const [user, loading] = useAuthState(auth);
