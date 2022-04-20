@@ -1,6 +1,6 @@
 export interface ChatProps {
     chat: Chat;
-    messages: Messages[];
+    messages: any;
 }
 
 export interface Chat {
