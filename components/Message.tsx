@@ -44,13 +44,20 @@ const SentMessage = ({ message }: any) => {
 const RecievedMessage = ({ message }: any) => {
     return (
         <section className="my-1 text-white">
-            <p
+            <div
                 className={`${
                     message.message.length < 30 ? "w-fit" : "w-[45%]"
                 } break-words rounded-lg bg-gray-500 px-4 py-2`}
             >
-                {message.message}
-            </p>
+                <p>{message.message}</p>
+                <div className="w-full text-left text-xs text-gray-200">
+                    <p>
+                        {message.timestamp
+                            ? moment(message.timestamp).format("LT")
+                            : "..."}
+                    </p>
+                </div>
+            </div>
         </section>
     );
 };
