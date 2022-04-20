@@ -27,7 +27,7 @@ const Chat = ({ id, users }: Chat) => {
     return (
         <div
             onClick={enterChat}
-            className="flex cursor-pointer items-center justify-start gap-3 break-words px-5 py-3 hover:bg-gray-200"
+            className="flex cursor-pointer items-center justify-start gap-3 break-words p-2 hover:bg-gray-200"
         >
             {recipient ? (
                 <img
