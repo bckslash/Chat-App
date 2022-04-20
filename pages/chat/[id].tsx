@@ -15,13 +15,13 @@ const Chat = ({ chat, messages }: ChatProps) => {
     const [user] = useAuthState(auth);
 
     return (
-        <main className="flex">
+        <main className="flex max-h-screen">
             <Head>
                 <title>Chat with {getRecipientEmail(chat.users, user)} </title>
             </Head>
 
             <Sidebar />
-            <section className="scroll-hide flex-1 overflow-scroll">
+            <section className="scroll-hide h-screen flex-1 overflow-scroll">
                 {/* @ts-ignore */}
                 <ChatScreen chat={chat} messages={messages} />
             </section>
