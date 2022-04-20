@@ -22,23 +22,27 @@ const Chat = ({ id, users }: Chat) => {
     };
 
     const recipient = recipientSnapshot?.docs[0]?.data();
-    const recipientEmail = getRecipientEmail(users, user);
+    const recipientEmail: any = getRecipientEmail(users, user);
 
     return (
-        <section
+        <div
             onClick={enterChat}
             className="flex cursor-pointer items-center justify-start gap-3 break-words px-5 py-3 hover:bg-gray-200"
         >
             {recipient ? (
                 <img
-                    className="m-2 w-10 rounded-full lg:w-12 xl:m-0"
+                    className="m-2 w-10 rounded-full"
                     src={recipient?.photoURL}
                 />
             ) : (
-                <FaUserCircle className="m-3 text-3xl text-gray-500 lg:text-5xl xl:m-0" />
+                <FaUserCircle className="m-3 text-3xl text-gray-500" />
             )}
-            <p className="text-gray-700">{recipientEmail}</p>
-        </section>
+            <p className="max-words-3 break-words text-gray-700">
+                {recipientEmail.length > 25
+                    ? (recipientEmail.substring(0, 25) + "...").toString()
+                    : recipientEmail}
+            </p>
+        </div>
     );
 };
 export default Chat;
