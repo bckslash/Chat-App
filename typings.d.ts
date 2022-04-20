@@ -1,11 +1,16 @@
-export interface ChatScreenProps {
+export interface ChatProps {
     chat: Chat;
-    messages: string[];
+    messages: Messages[];
 }
 
 export interface Chat {
     id: string;
     users: User[];
+}
+
+export interface Messages {
+    message: string
+    timestamp: any
 }
 
 export interface User {
