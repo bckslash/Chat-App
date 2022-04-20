@@ -14,9 +14,6 @@ import { ChatProps, DocumentProps, Messages } from "../../typings";
 const Chat = ({ chat, messages }: ChatProps) => {
     const [user] = useAuthState(auth);
 
-    console.log(chat);
-    console.log(messages);
-
     return (
         <main className="flex">
             <Head>
@@ -26,7 +23,7 @@ const Chat = ({ chat, messages }: ChatProps) => {
             <Sidebar />
             <section className="scroll-hide flex-1 overflow-scroll">
                 {/* @ts-ignore */}
-                <ChatScreen chat={chat} message={messages} />
+                <ChatScreen chat={chat} messages={messages} />
             </section>
         </main>
     );
