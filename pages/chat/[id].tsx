@@ -8,9 +8,10 @@ import { GetServerSideProps } from "next/types";
 
 import Sidebar from "../../components/Sidebar";
 import ChatScreen from "../../components/ChatScreen";
-import { ChatScreenProps, DocumentProps } from "../../typings";
+import { ChatProps, DocumentProps, Messages } from "../../typings";
 
-const Chat = ({ chat, messages }: ChatScreenProps) => {
+// ! FIX the TS error, line 34 below
+const Chat = ({ chat, messages }: ChatProps) => {
     const [user] = useAuthState(auth);
 
     console.log(chat);
@@ -19,12 +20,13 @@ const Chat = ({ chat, messages }: ChatScreenProps) => {
     return (
         <main className="flex">
             <Head>
-                <title>Chat with: {getRecipientEmail(chat.users, user)} </title>
+                <title>Chat with {getRecipientEmail(chat.users, user)} </title>
             </Head>
 
             <Sidebar />
             <section className="scroll-hide flex-1 overflow-scroll">
-                <ChatScreen />
+                {/* @ts-ignore */}
+                <ChatScreen chat={chat} message={messages} />
             </section>
         </main>
     );
@@ -47,7 +49,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
             id: doc.id,
             ...doc.data(),
         }))
-        .map((messages: any) => ({
+        .map((messages: Messages) => ({
             ...messages,
             timestamp: messages.timestamp.toDate().getTime(),
         }));
