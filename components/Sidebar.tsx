@@ -52,7 +52,7 @@ function Sidebar() {
     return (
         <aside className="min-h-screen min-w-max border-r border-gray-300 bg-gray-100">
             <header className="sticky z-10 flex flex-wrap items-center justify-between gap-20 border-b border-gray-300 bg-gray-200 p-2">
-                {user ? (
+                {user?.photoURL ? (
                     <img
                         onClick={() => auth.signOut()}
                         className="m-2 w-10 cursor-pointer rounded-full transition-opacity duration-200 ease-in-out hover:opacity-70"
@@ -66,10 +66,10 @@ function Sidebar() {
                 )}
                 <div className="flex items-center justify-center gap-2">
                     <DefaultButton>
-                        <BsFillChatLeftTextFill className="text-xl text-gray-800" />
+                        <BsFillChatLeftTextFill className="text-xl text-primary_dark" />
                     </DefaultButton>
                     <DefaultButton>
-                        <BsThreeDotsVertical className="text-xl text-gray-800" />
+                        <BsThreeDotsVertical className="text-xl text-primary_dark" />
                     </DefaultButton>
                 </div>
             </header>
@@ -106,7 +106,7 @@ function Sidebar() {
 export const Search = () => {
     return (
         <div className="group m-2 flex items-center justify-between gap-2 rounded-3xl p-2">
-            <AiOutlineSearch className="text-2xl text-gray-800" />
+            <AiOutlineSearch className="text-2xl text-primary_dark" />
             <input
                 className="flex-1 bg-inherit outline-none focus:outline-none"
                 type="text"

@@ -23,7 +23,7 @@ function Login() {
             </Head>
 
             <section className="space-y-5 rounded-lg bg-gray-100 p-10">
-                <h1 className="text-2xl font-semibold text-gray-800">
+                <h1 className="text-2xl font-semibold text-primary_dark">
                     Welcome to ZCT-Chat
                 </h1>
                 <hr />

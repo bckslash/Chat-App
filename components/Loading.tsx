@@ -4,7 +4,7 @@ function Loading() {
     return (
         <section className="flex max-h-screen gap-10 p-10">
             <div className="absolute z-10 flex h-full w-full animate-pulse items-center justify-center ">
-                <AiOutlineLoading3Quarters className="animate-spin text-8xl text-gray-800" />
+                <AiOutlineLoading3Quarters className="animate-spin text-8xl text-primary_dark" />
             </div>
             <aside className="space-y-10 overflow-hidden">
                 <div className="flex items-center justify-center gap-5">
