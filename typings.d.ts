@@ -16,7 +16,7 @@ export interface Messages {
 export interface User {
     id: string;
     email: string;
-    photoURL: string;
+    photoURL?: string;
 }
 
 export interface DocumentProps {
