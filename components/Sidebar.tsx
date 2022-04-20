@@ -53,7 +53,7 @@ function Sidebar() {
         <aside className="scroll-hide h-screen min-w-max overflow-scroll border-r border-gray-300 bg-gray-100">
             <main className="sticky top-0 bg-gray-100 shadow-sm">
                 <header className="z-10 flex flex-wrap items-center justify-between gap-20 border-b border-gray-300 bg-gray-200 p-2">
-                    {user?.photoURL ? (
+                    {user ? (
                         <img
                             onClick={() => auth.signOut()}
                             className="m-2 w-10 cursor-pointer rounded-full transition-opacity duration-200 ease-in-out hover:opacity-70"
