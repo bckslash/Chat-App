@@ -8,6 +8,7 @@ import { auth, db } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
 import Chat from "./Chat";
+import DefaultButton from "./DefaultButton";
 
 interface CreateChat {
     (): void;
@@ -50,26 +51,26 @@ function Sidebar() {
 
     return (
         <aside className="min-h-screen min-w-max border-r border-gray-300 bg-gray-100">
-            <header className="sticky z-10 flex flex-wrap items-center justify-between gap-20 border-b border-gray-300 bg-gray-200 p-2 xl:p-5">
+            <header className="sticky z-10 flex flex-wrap items-center justify-between gap-20 border-b border-gray-300 bg-gray-200 p-2">
                 {user ? (
                     <img
                         onClick={() => auth.signOut()}
-                        className="m-2 w-10 cursor-pointer rounded-full transition-opacity duration-200 ease-in-out hover:opacity-70 lg:w-12 xl:m-0"
+                        className="m-2 w-10 cursor-pointer rounded-full transition-opacity duration-200 ease-in-out hover:opacity-70"
                         src={user?.photoURL}
                     />
                 ) : (
                     <FaUserCircle
                         onClick={() => auth.signOut()}
-                        className="m-3 cursor-pointer text-3xl text-gray-500 transition-opacity duration-200 ease-in-out hover:opacity-70 lg:text-5xl xl:m-0"
+                        className="m-3 cursor-pointer text-3xl text-gray-500 transition-opacity duration-200 ease-in-out hover:opacity-70"
                     />
                 )}
                 <div className="flex items-center justify-center gap-2">
-                    <button className="rounded-full p-3 text-center transition-colors duration-200 ease-in-out hover:bg-gray-300 active:bg-gray-400">
-                        <BsFillChatLeftTextFill className="text-xl text-gray-800 md:text-2xl" />
-                    </button>
-                    <button className="rounded-full p-3 text-center transition-colors duration-200 ease-in-out hover:bg-gray-300 active:bg-gray-400">
-                        <BsThreeDotsVertical className="text-xl text-gray-800 md:text-2xl" />
-                    </button>
+                    <DefaultButton>
+                        <BsFillChatLeftTextFill className="text-xl text-gray-800" />
+                    </DefaultButton>
+                    <DefaultButton>
+                        <BsThreeDotsVertical className="text-xl text-gray-800" />
+                    </DefaultButton>
                 </div>
             </header>
             <main>
