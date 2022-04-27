@@ -6,6 +6,7 @@ export interface ChatProps {
 export interface Chat {
     id: string;
     users: User[];
+    showChat: any;
 }
 
 export interface Messages {
