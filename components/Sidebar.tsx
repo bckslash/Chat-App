@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import { FaUserCircle } from "react-icons/fa";
 import { BsFillChatLeftTextFill } from "react-icons/bs";
 import { BsThreeDotsVertical } from "react-icons/bs";
@@ -9,12 +11,15 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollection } from "react-firebase-hooks/firestore";
 import Chat from "./Chat";
 import DefaultButton from "./DefaultButton";
+import getRecipientEmail from "../utils/getRecipientEmail";
 
 interface CreateChat {
     (): void;
 }
 
-function Sidebar() {
+function Sidebar({ showChat, setShowChat }: any) {
+    const [findUser, setFindUser] = useState("");
+
     const [user]: any = useAuthState(auth);
     const userChatRef = db
         .collection("chats")
@@ -49,8 +54,12 @@ function Sidebar() {
                     ?.length > 0
         );
 
+    const getEmail = (chat: any) => {
+        return getRecipientEmail(chat.data().users, user).toString();
+    };
+
     return (
-        <aside className="scroll-hide h-screen min-w-max overflow-scroll border-r border-gray-300 bg-gray-100">
+        <aside className="scroll-hide min-w-max border-r border-gray-300 bg-gray-100 md:overflow-scroll">
             <main className="sticky top-0 bg-gray-100 shadow-sm">
                 <header className="z-10 flex flex-wrap items-center justify-between gap-20 border-b border-gray-300 bg-gray-200 p-2">
                     {user ? (
@@ -66,7 +75,11 @@ function Sidebar() {
                         />
                     )}
                     <div className="flex items-center justify-center gap-2">
-                        <DefaultButton>
+                        <DefaultButton
+                            onclick={() => {
+                                setShowChat(!showChat);
+                            }}
+                        >
                             <BsFillChatLeftTextFill className="text-xl text-primary_dark" />
                         </DefaultButton>
                         <DefaultButton>
@@ -74,27 +87,31 @@ function Sidebar() {
                         </DefaultButton>
                     </div>
                 </header>
-                <Search />
-                {/* Create chat button */}
-                <div className="border-y border-gray-300 text-center transition-colors duration-200 hover:bg-gray-200">
-                    <input
-                        onClick={createChat}
-                        className="h-full w-full cursor-pointer p-4"
-                        type="button"
-                        value="START A NEW CHAT"
-                    />
+                <div className={`${showChat && "hidden"} md:inline`}>
+                    <Search {...{ setFindUser }} />
+                    {/* Create chat button */}
+                    <div className="border-y border-gray-300 text-center transition-colors duration-200 hover:bg-gray-200">
+                        <input
+                            onClick={createChat}
+                            className="h-full w-full cursor-pointer p-4"
+                            type="button"
+                            value="START A NEW CHAT"
+                        />
+                    </div>
                 </div>
             </main>
 
             {/* list of chats */}
-            <div className="">
+            <div className={`${showChat && "hidden"} md:inline`}>
                 {chatsSnapshot?.docs.map((chat) => {
                     return (
-                        <Chat
-                            key={chat.id}
-                            id={chat.id}
-                            users={chat.data().users}
-                        />
+                        getEmail(chat).startsWith(findUser) && (
+                            <Chat
+                                key={chat.id}
+                                id={chat.id}
+                                users={chat.data().users}
+                            />
+                        )
                     );
                 })}
             </div>
@@ -102,11 +119,12 @@ function Sidebar() {
     );
 }
 
-export const Search = () => {
+export const Search = ({ setFindUser }: any) => {
     return (
         <div className="group m-2 flex items-center justify-between gap-2 rounded-3xl p-2 text-primary_dark">
             <AiOutlineSearch className="text-2xl" />
             <input
+                onChange={(e) => setFindUser(e.target.value)}
                 className="flex-1 bg-inherit outline-none focus:outline-none"
                 type="text"
                 placeholder="Search in chats"
