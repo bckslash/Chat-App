@@ -8,7 +8,7 @@ import getRecipientEmail from "../utils/getRecipientEmail";
 
 import { Chat } from "../typings";
 
-const Chat = ({ id, users }: Chat) => {
+const Chat = ({ id, users, showChat }: Chat) => {
     const router = useRouter();
     const [user] = useAuthState(auth);
     const [recipientSnapshot] = useCollection(
@@ -26,7 +26,12 @@ const Chat = ({ id, users }: Chat) => {
 
     return (
         <div
-            onClick={enterChat}
+            onClick={() => {
+                enterChat();
+                setTimeout(() => {
+                    showChat.setShowChat(!showChat.showChat);
+                }, 250);
+            }}
             className="flex cursor-pointer items-center justify-start gap-3 break-words p-2 hover:bg-gray-200"
         >
             {recipient ? (
