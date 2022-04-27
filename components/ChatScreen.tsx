@@ -19,6 +19,10 @@ import DefaultButton from "./DefaultButton";
 import Message from "./Message";
 import getRecipientEmail from "../utils/getRecipientEmail";
 
+import Picker from "emoji-picker-react";
+
+import dynamic from "next/dynamic";
+
 function ChatScreen({ chat, messages }: ChatProps) {
     const [user] = useAuthState(auth);
     const endOfChatRef: any = useRef(null);
@@ -96,6 +100,8 @@ function ChatScreen({ chat, messages }: ChatProps) {
 
         scrollToBottom();
         setInput("");
+
+        setShowEmojis(false);
     };
 
     const scrollToBottom = () => {
@@ -113,6 +119,8 @@ function ChatScreen({ chat, messages }: ChatProps) {
     useEffect(() => {
         scrollToBottom();
     });
+
+    const [showEmojis, setShowEmojis] = useState(false);
 
     return (
         <main className="flex min-h-screen flex-col">
@@ -174,9 +182,16 @@ function ChatScreen({ chat, messages }: ChatProps) {
                 <div className="mb-10" ref={endOfChatRef} />
             </div>
 
+            {/* Emojis picker */}
+            {showEmojis && <NoSSREmojiPicker {...{ input, setInput }} />}
+
             {/* input container */}
             <section className="group sticky bottom-0 flex items-center justify-between gap-2 border-t bg-gray-100 p-2 shadow-sm">
-                <DefaultButton>
+                <DefaultButton
+                    onclick={() => {
+                        setShowEmojis(!showEmojis);
+                    }}
+                >
                     <MdInsertEmoticon className="text-xl text-primary_dark" />
                 </DefaultButton>
 
@@ -197,5 +212,9 @@ function ChatScreen({ chat, messages }: ChatProps) {
         </main>
     );
 }
+
+const NoSSREmojiPicker = dynamic(() => import("../components/EmojiPicker"), {
+    ssr: false,
+});
 
 export default ChatScreen;
