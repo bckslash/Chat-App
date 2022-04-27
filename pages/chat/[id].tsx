@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Head from "next/head";
 
 import { db, auth } from "../../firebase";
@@ -14,14 +15,20 @@ import { ChatProps, DocumentProps, Messages } from "../../typings";
 const Chat = ({ chat, messages }: ChatProps) => {
     const [user] = useAuthState(auth);
 
+    const [showChat, setShowChat] = useState(false);
+
     return (
-        <main className="flex max-h-screen">
+        <main className="flex max-h-screen flex-col md:flex-row">
             <Head>
                 <title>Chat with {getRecipientEmail(chat.users, user)} </title>
             </Head>
 
-            <Sidebar />
-            <section className="scroll-hide h-screen flex-1 overflow-scroll">
+            <Sidebar {...{ showChat, setShowChat }} />
+            <section
+                className={`${
+                    showChat || "hidden"
+                } scroll-hide h-screen flex-1 overflow-scroll md:inline`}
+            >
                 {/* @ts-ignore */}
                 <ChatScreen chat={chat} messages={messages} />
             </section>
