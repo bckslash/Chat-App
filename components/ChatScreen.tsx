@@ -40,7 +40,6 @@ function ChatScreen({ chat, messages }: ChatProps) {
             .where("email", "==", getRecipientEmail(chat.users, user))
     );
     const recipient = recipientSnapshot?.docs[0]?.data();
-    console.log(recipient?.lastSeen.toDate());
 
     const showMessages = () => {
         if (messagesSnapchot) {
