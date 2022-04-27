@@ -107,7 +107,7 @@ function Sidebar({ showChat, setShowChat }: any) {
                     return (
                         getEmail(chat).startsWith(findUser) && (
                             <Chat
-                                showChat={{ showChat, setShowChat }}
+                                showChatProps={{ showChat, setShowChat }}
                                 key={chat.id}
                                 id={chat.id}
                                 users={chat.data().users}
