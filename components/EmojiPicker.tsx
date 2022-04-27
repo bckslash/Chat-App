@@ -10,7 +10,7 @@ const EmojiPicker = ({ input, setInput }: any) => {
     };
 
     return (
-        <div className="sticky bottom-16 z-10">
+        <div className="absolute bottom-16 z-10">
             <Picker onEmojiClick={onEmojiClick} />
         </div>
     );
