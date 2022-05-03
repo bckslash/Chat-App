@@ -49,7 +49,7 @@ Aplikácia využíva server-side rendering, technológiu pre rýche vykreslenie 
 
 ![login screen](/public//Login%20screen.png)
 
-7.  Prihlásenie do aplikácie pomocóu google konta
+7.  Prihlásenie do aplikácie pomocou google konta
 
 ## Spustenie aplikácie lokálne <a name = "localhost"></a>
 
