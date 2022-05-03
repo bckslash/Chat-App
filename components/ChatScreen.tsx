@@ -122,6 +122,8 @@ function ChatScreen({ chat, messages }: ChatProps) {
 
     const [showEmojis, setShowEmojis] = useState(false);
 
+    // ? Non functional button line 170 and 211
+
     return (
         <main className="flex min-h-screen flex-col">
             <header className="sticky top-0 z-10 flex min-w-max place-items-center gap-3 border-b border-gray-300 bg-gray-200 p-2 shadow-sm">
@@ -165,6 +167,7 @@ function ChatScreen({ chat, messages }: ChatProps) {
                     )}
                 </div>
 
+                {/* 
                 <aside className="flex-1 text-right">
                     <DefaultButton>
                         <IoMdAttach className="text-xl text-primary_dark" />
@@ -173,7 +176,7 @@ function ChatScreen({ chat, messages }: ChatProps) {
                     <DefaultButton>
                         <BsThreeDotsVertical className="text-xl text-primary_dark" />
                     </DefaultButton>
-                </aside>
+                </aside> */}
             </header>
 
             {/* messages container */}
@@ -205,9 +208,9 @@ function ChatScreen({ chat, messages }: ChatProps) {
                     />
                 </form>
 
-                <DefaultButton>
+                {/* <DefaultButton>
                     <BiMicrophone className="text-xl text-primary_dark" />
-                </DefaultButton>
+                </DefaultButton> */}
             </section>
         </main>
     );

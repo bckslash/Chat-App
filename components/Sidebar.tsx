@@ -58,6 +58,8 @@ function Sidebar({ showChat, setShowChat }: any) {
         return getRecipientEmail(chat.data().users, user).toString();
     };
 
+    // ? Non functional button line 87
+
     return (
         <aside className="scroll-hide min-w-max border-r border-gray-300 bg-gray-100 md:overflow-scroll">
             <main className="sticky top-0 bg-gray-100 shadow-sm">
@@ -82,9 +84,9 @@ function Sidebar({ showChat, setShowChat }: any) {
                         >
                             <BsFillChatLeftTextFill className="text-xl text-primary_dark" />
                         </DefaultButton>
-                        <DefaultButton>
+                        {/* <DefaultButton>
                             <BsThreeDotsVertical className="text-xl text-primary_dark" />
-                        </DefaultButton>
+                        </DefaultButton> */}
                     </div>
                 </header>
                 <div className={`${showChat && "hidden"} md:inline`}>
