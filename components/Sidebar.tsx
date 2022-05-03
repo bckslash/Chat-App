@@ -61,7 +61,7 @@ function Sidebar({ showChat, setShowChat }: any) {
     // ? Non functional button line 87
 
     return (
-        <aside className="scroll-hide min-w-max border-r border-gray-300 bg-gray-100 md:overflow-scroll">
+        <aside className="scroll-hide h-screen min-w-max border-r border-gray-300 bg-gray-100 md:overflow-scroll">
             <main className="sticky top-0 bg-gray-100 shadow-sm">
                 <header className="z-10 flex flex-wrap items-center justify-between gap-20 border-b border-gray-300 bg-gray-200 p-2">
                     {user ? (
