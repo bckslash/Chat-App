@@ -52,13 +52,13 @@ Aplikácia využíva server-side rendering, technológiu pre rýche vykreslenie 
 
 7.  Prihlásenie do aplikácie pomocou google konta
 
-## 💻 Štruktúra Firebase databázy <a name = "database"></a>
+## 🔥 Štruktúra Firebase databázy <a name = "database"></a>
 
 ![mobile chat](/public///data_users.png)
 ![mobile chat](/public///data_chats.png)
 ![mobile chat](/public///data_messages.png)
 
-## Spustenie aplikácie lokálne <a name = "localhost"></a>
+## 🧑🏽‍💻 Spustenie aplikácie lokálne <a name = "localhost"></a>
 
 Po stiahnutí a nainštalovaní aplikácie je možné aplikáciu spustiť lokálne.
 
