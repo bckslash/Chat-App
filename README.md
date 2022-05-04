@@ -8,6 +8,7 @@
 -   [O aplikácií ](#about)
 -   [Diagram nasadenia aplikácie](#diagram)
 -   [Popis UI aplikácie](#ui)
+-   [Štruktúra Firebase databázy](#database)
 -   [Spustenie aplikácie lokálne](#localhost)
 -   [Deployment](#deployment)
 -   [Použité technológie](#built_using)
@@ -50,6 +51,12 @@ Aplikácia využíva server-side rendering, technológiu pre rýche vykreslenie 
 ![login screen](/public//Login%20screen.png)
 
 7.  Prihlásenie do aplikácie pomocou google konta
+
+## 💻 Štruktúra Firebase databázy <a name = "database"></a>
+
+![mobile chat](/public///data_users.png)
+![mobile chat](/public///data_chats.png)
+![mobile chat](/public///data_messages.png)
 
 ## Spustenie aplikácie lokálne <a name = "localhost"></a>
 
